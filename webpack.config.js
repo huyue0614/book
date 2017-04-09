@@ -37,6 +37,10 @@ module.exports={
             {
                 test:/\.json$/,
                 loader:"json-loader"
+            },
+            {
+                test:/\.(txt)$/,
+                loader:"url-loader?limit=1"
             }
         ]
     }

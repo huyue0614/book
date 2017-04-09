@@ -7,7 +7,32 @@ var HomeBooks=React.createClass({
     getInitialState: function () {
         return{homebooks:this.props.homebooks}
     },
-
+    loadMore:function (bookModule){
+        var homebooks=this.state.homebooks;
+        var obj=homebooks.find(function (item) {
+            return item.book_module==bookModule;
+        });
+        $.ajax({
+            url:require("./data.txt"),
+            data:"json",
+            success:  (result)=> {
+                result=JSON.parse(result);
+                var data=obj.data;
+                obj.data=data.concat(result);
+                homebooks=homebooks.map(function (item) {
+                    if(item.book_module==obj.book_module){
+                        return obj;
+                    }else{
+                        return item;
+                    }
+                });
+                this.setState({homebooks});
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        })
+    },
     render: function () {
         return(
             <ul className="home-books">
@@ -16,7 +41,7 @@ var HomeBooks=React.createClass({
                         return <li key={index}>
                             <div className="book_header">
                                 <span className="book_module">{item.book_module}</span>
-                                <span className="book_more">更多&gt;&gt;</span>
+                                <span className="book_more" onTouchStart={()=>{this.loadMore(item.book_module)}}>更多&gt;&gt;</span>
                             </div>
                             {
                                 item.data.map(function (item, index) {

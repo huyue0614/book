@@ -1,0 +1,5 @@
+[
+    {"href":"http://m.china-pub.com/touch/tbrowse.aspx","src":"http://images.china-pub.com/ebook5455001-5460000/5458257/zcover.jpg","bookname":"go并发编程实战（第二版）","pricenew":"￥60.83","priceold":"￥79"},
+    {"href":"http://m.china-pub.com/touch/tbrowse.aspx","src":"http://images.china-pub.com/ebook5465001-5470000/5466712/zcover.jpg","bookname":"go并发编程实战（第二版）","pricenew":"￥60.83","priceold":"￥79"},
+    {"href":"http://m.china-pub.com/touch/tbrowse.aspx","src":"http://images.china-pub.com/ebook190001-195000/192890/zcover.jpg","bookname":"go并发编程实战（第二版）","pricenew":"￥60.83","priceold":"￥79"}
+]

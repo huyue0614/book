@@ -14,16 +14,12 @@ var HomeTab=React.createClass({
         $(id).css("background","#ff6600").siblings().css("background","#fff");
         $(con).css("display","block").siblings().css("display","none")
     },
-    componentDidMount: function () {
-        $("#one").mouseover(this.tabListChange.bind(this,"#one","#con_one"));
-        $("#two").mouseover(this.tabListChange.bind(this,"#two","#con_two"));
-    },
     render: function () {
         return(
             <div className="home-tab">
                 <div className="tab-list">
-                    <span id="one">新书预售</span>
-                    <span id="two">重磅推荐</span>
+                    <span id="one"  onTouchStart={()=>{this.tabListChange("#one","#con_one")}}>新书预售</span>
+                    <span id="two"  onTouchStart={()=>{this.tabListChange("#two","#con_two")}}>重磅推荐</span>
                 </div>
                 <div>
                     <div id="con_one" className="tab-container">

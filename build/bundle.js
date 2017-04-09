@@ -19825,8 +19825,37 @@ var HomeBooks = _react2.default.createClass({
     getInitialState: function getInitialState() {
         return { homebooks: this.props.homebooks };
     },
+    loadMore: function loadMore(bookModule) {
+        var _this = this;
 
+        var homebooks = this.state.homebooks;
+        var obj = homebooks.find(function (item) {
+            return item.book_module == bookModule;
+        });
+        $.ajax({
+            url: __webpack_require__(217),
+            data: "json",
+            success: function success(result) {
+                result = JSON.parse(result);
+                var data = obj.data;
+                obj.data = data.concat(result);
+                homebooks = homebooks.map(function (item) {
+                    if (item.book_module == obj.book_module) {
+                        return obj;
+                    } else {
+                        return item;
+                    }
+                });
+                _this.setState({ homebooks: homebooks });
+            },
+            error: function error(_error) {
+                console.log(_error);
+            }
+        });
+    },
     render: function render() {
+        var _this2 = this;
+
         return _react2.default.createElement(
             "ul",
             { className: "home-books" },
@@ -19844,7 +19873,9 @@ var HomeBooks = _react2.default.createClass({
                         ),
                         _react2.default.createElement(
                             "span",
-                            { className: "book_more" },
+                            { className: "book_more", onTouchStart: function onTouchStart() {
+                                    _this2.loadMore(item.book_module);
+                                } },
                             "\u66F4\u591A>>"
                         )
                     ),
@@ -19915,11 +19946,9 @@ var HomeTab = _react2.default.createClass({
         $(id).css("background", "#ff6600").siblings().css("background", "#fff");
         $(con).css("display", "block").siblings().css("display", "none");
     },
-    componentDidMount: function componentDidMount() {
-        $("#one").mouseover(this.tabListChange.bind(this, "#one", "#con_one"));
-        $("#two").mouseover(this.tabListChange.bind(this, "#two", "#con_two"));
-    },
     render: function render() {
+        var _this = this;
+
         return _react2.default.createElement(
             "div",
             { className: "home-tab" },
@@ -19928,12 +19957,16 @@ var HomeTab = _react2.default.createClass({
                 { className: "tab-list" },
                 _react2.default.createElement(
                     "span",
-                    { id: "one" },
+                    { id: "one", onTouchStart: function onTouchStart() {
+                            _this.tabListChange("#one", "#con_one");
+                        } },
                     "\u65B0\u4E66\u9884\u552E"
                 ),
                 _react2.default.createElement(
                     "span",
-                    { id: "two" },
+                    { id: "two", onTouchStart: function onTouchStart() {
+                            _this.tabListChange("#two", "#con_two");
+                        } },
                     "\u91CD\u78C5\u63A8\u8350"
                 )
             ),
@@ -35682,7 +35715,7 @@ exports = module.exports = __webpack_require__(57)(undefined);
 
 
 // module
-exports.push([module.i, "*{\r\n    margin:0;\r\n    padding:0;\r\n}\r\nhtml,body{\r\n    font-family:\"\\5FAE\\8F6F\\96C5\\9ED1\";\r\n    max-width: 7.5rem;\r\n    min-width: 3.2rem;\r\n}\r\nul{\r\n    list-style: none;\r\n}\r\na{\r\n    text-decoration: none;\r\n}\r\n.header{\r\n    width:100%;\r\n    height:.66rem;\r\n    padding:.1rem .06rem;\r\n    font-size:.14rem;\r\n}\r\n.header h1{\r\n    float:left;\r\n    width:1.1rem;\r\n    height:.38rem;\r\n    margin-top:.04rem;\r\n    background: url(" + __webpack_require__(218) + ") no-repeat;\r\n    background-size: contain;\r\n}\r\n.header .search{\r\n    width:1.47rem;\r\n    height:.46rem;\r\n    border-radius: .08rem;\r\n    background:#eaeaea;\r\n    line-height: .46rem;\r\n    float:left;\r\n    margin:0 .05rem;\r\n}\r\n.header .search input[type=text]{\r\n    width:1.06rem;\r\n    border:none;\r\n    background:#eaeaea ;\r\n    padding-left:.12rem;\r\n    outline: none;\r\n}\r\n.header .search input[type=button]{\r\n    width:.26rem;\r\n    height:.26rem;\r\n    background: url(" + __webpack_require__(219) + ") no-repeat;\r\n    border:none;\r\n    vertical-align: middle;\r\n}\r\n.shopping{\r\n    float:left;\r\n    width:.45rem;\r\n    height:.5rem;\r\n    position: relative;\r\n}\r\n.shopping i{\r\n    margin-top:.05rem;\r\n    width:.28rem;\r\n    height:.28rem;\r\n    background: url(" + __webpack_require__(217) + ")no-repeat;\r\n    background-size: contain;\r\n    float:left;\r\n}\r\n.shopping b{\r\n    position: absolute;\r\n    top:-.02rem;\r\n    left:.2rem;\r\n    width:.22rem;\r\n    height:.22rem;\r\n    background: #ff6601;\r\n    text-align: center;\r\n    line-height: .22rem;\r\n    color:#fff;\r\n    border-radius: 50%;\r\n}\r\n.banner{\r\n    width:100%;\r\n    height:1.47rem;\r\n    font-size: .12rem;\r\n}\r\n.banner .img{\r\n    width:100%;\r\n}\r\n.banner .swiper-pagination-bullet{\r\n    width: .1rem;\r\n    height:.1rem;\r\n    background-color: lightgray;\r\n    opacity: 1;\r\n}\r\n.banner .swiper-pagination-bullet-active {\r\n    background-color: lightcoral;\r\n}\r\n.nav{\r\n    width:100%;\r\n    height:1.74rem;\r\n    padding:.24rem 0 .06rem;\r\n    font-size: 12px;\r\n    overflow:hidden\r\n}\r\n.nav a{\r\n    width:25%;\r\n    height:.87rem;\r\n    float: left;\r\n    text-decoration: none;\r\n}\r\n.nav a img{\r\n    width:.6rem;\r\n    height:.6rem;\r\n    display: block;\r\n    margin:0 auto\r\n}\r\n.nav a span{\r\n    display: block;\r\n    font-size: .12rem;\r\n    text-align: center;\r\n    color:#333;\r\n    margin-top:.05rem;\r\n}\r\n.home-tab{\r\n    width:100%;\r\n    font-size: 12px;\r\n    position: relative;\r\n}\r\n.home-tab .tab-list{\r\n    height:.45rem;\r\n    border:.02rem solid #ff6600;\r\n}\r\n.home-tab .tab-list span{\r\n    float:left;\r\n    width:50%;\r\n    height:100%;\r\n    text-align: center;\r\n    line-height: .45rem;\r\n}\r\n.home-tab .tab-list span:nth-child(1){\r\n    background: #ff6600;\r\n}\r\n.home-tab .tab-container{\r\n    overflow: hidden;\r\n    width:100%;\r\n    margin-top:.3rem;\r\n}\r\n.book_list{\r\n    float:left;\r\n    width:1.04rem;\r\n    padding:.1rem 0;\r\n    border:.01rem solid #e0e0e0;\r\n}\r\n.book_list a{\r\n    text-decoration: none;\r\n}\r\n.book_list img{\r\n    width: 100%;\r\n    height:1.68rem;\r\n}\r\n.book_list p{\r\n    text-align: center;\r\n    font-size: .12rem;\r\n}\r\n.book_list .new{\r\n    margin:0 .05rem;\r\n    font-size: .14rem;\r\n    color:red;\r\n}\r\n.book_list .old{\r\n    font-size: .14rem;\r\n    color:grey;\r\n    text-decoration:line-through;\r\n}\r\n.home-tab #con_two{\r\n    display:none;\r\n}\r\n.home-books{\r\n    font-size: 12px;\r\n}\r\n.home-books li{\r\n    overflow: hidden;\r\n}\r\n.home-books li .book_header{\r\n    height:.45rem;\r\n    border-bottom:.01rem solid #007aff;\r\n    font-size: .16rem;\r\n    line-height: .45rem;\r\n}\r\n.home-books li .book_module{\r\n    float:left;\r\n    color:#007aff;\r\n    font-weight: bold;\r\n    margin-left:.2rem;\r\n}\r\n.home-books li .book_more{\r\n    float:right;\r\n    color:grey;\r\n}", ""]);
+exports.push([module.i, "*{\r\n    margin:0;\r\n    padding:0;\r\n}\r\nhtml,body{\r\n    font-family:\"\\5FAE\\8F6F\\96C5\\9ED1\";\r\n    max-width: 7.5rem;\r\n    min-width: 3.2rem;\r\n}\r\nul{\r\n    list-style: none;\r\n}\r\na{\r\n    text-decoration: none;\r\n}\r\n.header{\r\n    width:100%;\r\n    height:.66rem;\r\n    padding:.1rem .06rem;\r\n    font-size:.14rem;\r\n}\r\n.header h1{\r\n    float:left;\r\n    width:1.1rem;\r\n    height:.38rem;\r\n    margin-top:.04rem;\r\n    background: url(" + __webpack_require__(219) + ") no-repeat;\r\n    background-size: contain;\r\n}\r\n.header .search{\r\n    width:1.47rem;\r\n    height:.46rem;\r\n    border-radius: .08rem;\r\n    background:#eaeaea;\r\n    line-height: .46rem;\r\n    float:left;\r\n    margin:0 .05rem;\r\n}\r\n.header .search input[type=text]{\r\n    width:1.06rem;\r\n    border:none;\r\n    background:#eaeaea ;\r\n    padding-left:.12rem;\r\n    outline: none;\r\n}\r\n.header .search input[type=button]{\r\n    width:.26rem;\r\n    height:.26rem;\r\n    background: url(" + __webpack_require__(220) + ") no-repeat;\r\n    border:none;\r\n    vertical-align: middle;\r\n}\r\n.shopping{\r\n    float:left;\r\n    width:.45rem;\r\n    height:.5rem;\r\n    position: relative;\r\n}\r\n.shopping i{\r\n    margin-top:.05rem;\r\n    width:.28rem;\r\n    height:.28rem;\r\n    background: url(" + __webpack_require__(218) + ")no-repeat;\r\n    background-size: contain;\r\n    float:left;\r\n}\r\n.shopping b{\r\n    position: absolute;\r\n    top:-.02rem;\r\n    left:.2rem;\r\n    width:.22rem;\r\n    height:.22rem;\r\n    background: #ff6601;\r\n    text-align: center;\r\n    line-height: .22rem;\r\n    color:#fff;\r\n    border-radius: 50%;\r\n}\r\n.banner{\r\n    width:100%;\r\n    height:1.47rem;\r\n    font-size: .12rem;\r\n}\r\n.banner .img{\r\n    width:100%;\r\n}\r\n.banner .swiper-pagination-bullet{\r\n    width: .1rem;\r\n    height:.1rem;\r\n    background-color: lightgray;\r\n    opacity: 1;\r\n}\r\n.banner .swiper-pagination-bullet-active {\r\n    background-color: lightcoral;\r\n}\r\n.nav{\r\n    width:100%;\r\n    height:1.74rem;\r\n    padding:.24rem 0 .06rem;\r\n    font-size: 12px;\r\n    overflow:hidden\r\n}\r\n.nav a{\r\n    width:25%;\r\n    height:.87rem;\r\n    float: left;\r\n    text-decoration: none;\r\n}\r\n.nav a img{\r\n    width:.6rem;\r\n    height:.6rem;\r\n    display: block;\r\n    margin:0 auto\r\n}\r\n.nav a span{\r\n    display: block;\r\n    font-size: .12rem;\r\n    text-align: center;\r\n    color:#333;\r\n    margin-top:.05rem;\r\n}\r\n.home-tab{\r\n    width:100%;\r\n    font-size: 12px;\r\n    position: relative;\r\n}\r\n.home-tab .tab-list{\r\n    height:.45rem;\r\n    border:.02rem solid #ff6600;\r\n}\r\n.home-tab .tab-list span{\r\n    float:left;\r\n    width:50%;\r\n    height:100%;\r\n    text-align: center;\r\n    line-height: .45rem;\r\n}\r\n.home-tab .tab-list span:nth-child(1){\r\n    background: #ff6600;\r\n}\r\n.home-tab .tab-container{\r\n    overflow: hidden;\r\n    width:100%;\r\n    margin-top:.3rem;\r\n}\r\n.book_list{\r\n    float:left;\r\n    width:1.04rem;\r\n    padding:.1rem 0;\r\n    border:.01rem solid #e0e0e0;\r\n}\r\n.book_list a{\r\n    text-decoration: none;\r\n}\r\n.book_list img{\r\n    width: 100%;\r\n    height:1.68rem;\r\n}\r\n.book_list p{\r\n    text-align: center;\r\n    font-size: .12rem;\r\n}\r\n.book_list .new{\r\n    margin:0 .05rem;\r\n    font-size: .14rem;\r\n    color:red;\r\n}\r\n.book_list .old{\r\n    font-size: .14rem;\r\n    color:grey;\r\n    text-decoration:line-through;\r\n}\r\n.home-tab #con_two{\r\n    display:none;\r\n}\r\n.home-books{\r\n    font-size: 12px;\r\n}\r\n.home-books li{\r\n    overflow: hidden;\r\n}\r\n.home-books li .book_header{\r\n    height:.45rem;\r\n    border-bottom:.01rem solid #007aff;\r\n    font-size: .16rem;\r\n    line-height: .45rem;\r\n}\r\n.home-books li .book_module{\r\n    float:left;\r\n    color:#007aff;\r\n    font-weight: bold;\r\n    margin-left:.2rem;\r\n}\r\n.home-books li .book_more{\r\n    float:right;\r\n    color:grey;\r\n}", ""]);
 
 // exports
 
@@ -35729,18 +35762,24 @@ if(false) {
 
 /***/ }),
 /* 217 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "c4b4b6e88a3ff0cd57770680f9e447c0.txt";
+
+/***/ }),
+/* 218 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowQTZEQTlEQzA3ODgxMUU2OUExQURFREE1N0U5RkNENCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowQTZEQTlERDA3ODgxMUU2OUExQURFREE1N0U5RkNENCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjBBNkRBOURBMDc4ODExRTY5QTFBREVEQTU3RTlGQ0Q0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjBBNkRBOURCMDc4ODExRTY5QTFBREVEQTU3RTlGQ0Q0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+d2C/LwAAAhRJREFUeNrsmdFtgzAQhqHKAHSCkglKugBhBCZoM0Gb1z6Fl76iThA6QbpBkgUaNki6QToB/U86JMuKCNhnkkhYsgwOOj4fv89nx6+qyrulcufdWBmAB+BbBx7pHf7HT4hmf+LZonp/mp143goANu2AYeAAiAkuA6X7GXV6DR7228RhDIBg16hjGtAlPey3XTgARg9mqBvHTjxiEKUE8LpHWWwAnbTScEPZooYwNHYpCdh7Q5NLhDWSQshRxGV5QC2tgeGJWruuZRE1zZOuCwcZih0DT1l+IsBblx7m8OmJSKInHRPwQY/1xsA96Dg+F+dNkh+XOm7UrymwEx0r+nXiYRc6js7p1wjYoY7jpuhgm8AT9GPf+rUBFtUx5BVx/r1x6eEILwoEvduYVloBO9Bx7LXMs0cGn4+8SingkdPAV0s51AOfOwFGWXEIKlD/hDz8ha9WiG6RlMmxQ01qWfS9p+uq4UDT8NUfpBy1ZfQ6t/maLJZoXljDv8I8xbml2QSYYJe8jJJEQvZ8aQCoJuy1rRTQ31KTjgzSMVYGowvuyznM0W760BGWjg5mdYSALYpAU9zfS2k45Em3UPrm6m8dgUstnH2Spzkaya10WmoZmZ7wcJoa6A5p+lImGt7xZcZtzi+fGITIPcNlfJ/zqU8q6eGUAVdc6YWJoYcTZfWkiUyTbSYaJS5dhr8MBuABuOfyL8AAxxDRx3JnkbMAAAAASUVORK5CYII="
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "74aff3ce8b9f07af096796bdba4fde0e.png";
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGODc3OTk4RjA3OEUxMUU2Qjc4NThENjI4NTlERjYxMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGODc3OTk5MDA3OEUxMUU2Qjc4NThENjI4NTlERjYxMiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkY4Nzc5OThEMDc4RTExRTZCNzg1OEQ2Mjg1OURGNjEyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkY4Nzc5OThFMDc4RTExRTZCNzg1OEQ2Mjg1OURGNjEyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+ZJrVQAAAAaBJREFUeNq8Vtttg0AQNFYKcAmXDkgFhgogHcAPvyYVxK7Ayi8/kArsVBCXQCoI7oAOyKw0WJfTiYcxrDQ6Wb5lbh83e07TNKslbL1ayJ66/syyLMISAB6wMf4ugQvwkSRJ1Ufk2FIHghDLEVBADZyBKz+sCDmAS5cCeANhPZgIJEKQkkCci46IhfAdiLjfx/6ylwiOezqWdKqH5J8ZyPnTSnYjwmapw7ekBxv9scWGv0t/OdyLeUi96+REUtTXe7qKURxYv9QaEUM/AXFXTQZG9ssOfdajaiOSDqqmktAOJAptqfPYuo+wM1dlI1K8J5NNS9d2CQmqltI6ZZLpRMEjGHifxH5sRFJAl5Iy1XZGU/wj+uJ6nBiNou5dTEVfs1MK6lvI0XCvnbjGXc0QU6fysWTYvwFyjo3CNp/Whlb5GtlePjBCTCPbRe2aR4oC67FFP6WwpvRTHwNtFhUkCRlV3DthtQ/tSKhfRP3E7fS9TVemMDJnmtP3CmKEIYVyS7Jr+2awDUcbmTPXc8skm+25xRrF7MTUmfsBya6s/gQYAHT1y1NKX8IHAAAAAElFTkSuQmCC"
