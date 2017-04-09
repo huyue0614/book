@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    $.ajax({
+        url:"./data.json",
+        data:"json",
+        success: function (result) {
+            console.log(result)
+        },
+        error: function (error) {
+            console.log(error)
+        }
+    })
+</script>
+</body>
+</html>

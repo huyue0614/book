@@ -1,0 +1,197 @@
+*{
+    margin:0;
+    padding:0;
+}
+html,body{
+    font-family:"微软雅黑";
+    max-width: 7.5rem;
+    min-width: 3.2rem;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.header{
+    width:100%;
+    height:.66rem;
+    padding:.1rem .06rem;
+    font-size:.14rem;
+}
+.header h1{
+    float:left;
+    width:1.1rem;
+    height:.38rem;
+    margin-top:.04rem;
+    background: url("../images/header_logo.png") no-repeat;
+    background-size: contain;
+}
+.header .search{
+    width:1.47rem;
+    height:.46rem;
+    border-radius: .08rem;
+    background:#eaeaea;
+    line-height: .46rem;
+    float:left;
+    margin:0 .05rem;
+}
+.header .search input[type=text]{
+    width:1.06rem;
+    border:none;
+    background:#eaeaea ;
+    padding-left:.12rem;
+    outline: none;
+}
+.header .search input[type=button]{
+    width:.26rem;
+    height:.26rem;
+    background: url("../images/search-icon.png") no-repeat;
+    border:none;
+    vertical-align: middle;
+}
+.shopping{
+    float:left;
+    width:.45rem;
+    height:.5rem;
+    position: relative;
+}
+.shopping i{
+    margin-top:.05rem;
+    width:.28rem;
+    height:.28rem;
+    background: url("../images/header_car.png")no-repeat;
+    background-size: contain;
+    float:left;
+}
+.shopping b{
+    position: absolute;
+    top:-.02rem;
+    left:.2rem;
+    width:.22rem;
+    height:.22rem;
+    background: #ff6601;
+    text-align: center;
+    line-height: .22rem;
+    color:#fff;
+    border-radius: 50%;
+}
+.banner{
+    width:100%;
+    height:1.47rem;
+    font-size: .12rem;
+}
+.banner .img{
+    width:100%;
+}
+.banner .swiper-pagination-bullet{
+    width: .1rem;
+    height:.1rem;
+    background-color: lightgray;
+    opacity: 1;
+}
+.banner .swiper-pagination-bullet-active {
+    background-color: lightcoral;
+}
+.nav{
+    width:100%;
+    height:1.74rem;
+    padding:.24rem 0 .06rem;
+    font-size: 12px;
+    overflow:hidden
+}
+.nav a{
+    width:25%;
+    height:.87rem;
+    float: left;
+    text-decoration: none;
+}
+.nav a img{
+    width:.6rem;
+    height:.6rem;
+    display: block;
+    margin:0 auto
+}
+.nav a span{
+    display: block;
+    font-size: .12rem;
+    text-align: center;
+    color:#333;
+    margin-top:.05rem;
+}
+.home-tab{
+    width:100%;
+    font-size: 12px;
+    position: relative;
+}
+.home-tab .tab-list{
+    height:.45rem;
+    border:.02rem solid #ff6600;
+}
+.home-tab .tab-list span{
+    float:left;
+    width:50%;
+    height:100%;
+    text-align: center;
+    line-height: .45rem;
+}
+.home-tab .tab-list span:nth-child(1){
+    background: #ff6600;
+}
+.home-tab .tab-container{
+    overflow: hidden;
+    width:100%;
+    margin-top:.3rem;
+}
+.book_list{
+    float:left;
+    width:1.04rem;
+    padding:.1rem 0;
+    border:.01rem solid #e0e0e0;
+}
+.book_list a{
+    text-decoration: none;
+}
+.book_list img{
+    width: 100%;
+    height:1.68rem;
+}
+.book_list p{
+    text-align: center;
+    font-size: .12rem;
+}
+.book_list .new{
+    margin:0 .05rem;
+    font-size: .14rem;
+    color:red;
+}
+.book_list .old{
+    font-size: .14rem;
+    color:grey;
+    text-decoration:line-through;
+}
+.home-tab #con_two{
+    display:none;
+}
+.home-books{
+    font-size: 12px;
+}
+.home-books li{
+    overflow: hidden;
+}
+.home-books li .book_header{
+    height:.45rem;
+    border-bottom:.01rem solid #007aff;
+    font-size: .16rem;
+    line-height: .45rem;
+}
+.home-books li .book_module{
+    float:left;
+    color:#007aff;
+    font-weight: bold;
+    margin-left:.2rem;
+}
+.home-books li .book_more{
+    float:right;
+    color:grey;
+}
