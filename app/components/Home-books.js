@@ -7,18 +7,7 @@ var HomeBooks=React.createClass({
     getInitialState: function () {
         return{homebooks:this.props.homebooks}
     },
-    loadMore:function (){
-        $.ajax({
-            url:require("./data.json"),
-            data:"json",
-            success: function (result) {
-                console.log(result)
-            },
-            error: function (error) {
-                console.log(error)
-            }
-        })
-    },
+
     render: function () {
         return(
             <ul className="home-books">
@@ -27,7 +16,7 @@ var HomeBooks=React.createClass({
                         return <li key={index}>
                             <div className="book_header">
                                 <span className="book_module">{item.book_module}</span>
-                                <span className="book_more" onMouseOver={()=>{this.loadMore()}}>更多&gt;&gt;</span>
+                                <span className="book_more">更多&gt;&gt;</span>
                             </div>
                             {
                                 item.data.map(function (item, index) {
