@@ -1,10 +1,7 @@
-/**
- * Created by Administrator on 2017/4/8.
- */
 import React from "react";
 var Nav=React.createClass({
     getInitialState: function () {
-      return{navs:this.props.navs}
+      return {navs:this.props.navs}
     },
     render: function () {
         return(

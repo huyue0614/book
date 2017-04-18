@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2017/4/7.
- */
 import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./components/Header.js";
@@ -25,7 +22,7 @@ var navs=[
     {"href":"http://m.china-pub.com/touch/touch-login.aspx","src":require("../images/nav_fav.png"),"des":"我的收藏"},
     {"href":"http://m.china-pub.com/touch/shiducenter.aspx","src":require("../images/nav_order.png"),"des":"试读赠书"},
     {"href":"http://m.china-pub.com/touch/touch-login.aspx","src":require("../images/nav_person.png"),"des":"个人中心"}
-]
+];
 var newbooks=[
     {"href":"http://m.china-pub.com/touch/tbrowse.aspx","src":require("../images/book1.jpg"),"bookname":"go并发编程实战（第二版）","pricenew":"￥60.83","priceold":"￥79"},
     {"href":"http://m.china-pub.com/touch/tbrowse.aspx","src":require("../images/book2.jpg"),"bookname":"go并发编程实战（第二版）","pricenew":"￥60.83","priceold":"￥79"},

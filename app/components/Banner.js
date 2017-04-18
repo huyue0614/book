@@ -2,11 +2,11 @@
  * Created by Administrator on 2017/4/7.
  */
 import React from "react";
-var $=require('jquery');
+var $ = require('jquery');
 //require("../../node_modules/swiper/dist/css/swiper.min.css");
 //var Swiper=require("../../node_modules/swiper/dist/js/swiper.min");
-require('../lib/swiper.min.css')
-var Swiper=require('../lib/swiper.min')
+require('../lib/swiper.min.css');
+var Swiper=require('../lib/swiper.min.js');
 var Banner =React.createClass({
     getInitialState: function () {
       return {images:this.props.images}

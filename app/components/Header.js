@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2017/4/7.
- */
 import React from "react";
 var Header =React.createClass({
     render: function () {

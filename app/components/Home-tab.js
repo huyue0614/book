@@ -1,9 +1,6 @@
-/**
- * Created by Administrator on 2017/4/8.
- */
 import React from "react";
-var $=require("jquery");
-var HomeTab=React.createClass({
+var $ = require("jquery");
+var HomeTab = React.createClass({
     getInitialState: function () {
       return{
           newbooks:this.props.newbooks,
